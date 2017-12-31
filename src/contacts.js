@@ -1,5 +1,7 @@
 // @flow
 
+import './contacts.css';
+
 let addButton: HTMLButtonElement;
 let nameInput: HTMLInputElement;
 let relationshipInput: HTMLInputElement;

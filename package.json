@@ -17,8 +17,8 @@
     "format": "prettier-eslint --write src/**/*.js",
     "lint": "eslint --quiet src --ext .js",
     "postinstall": "flow-typed install",
-    "start": "node build/index.js",
-    "start-dev": "babel-watch --message 'restarting' --ignore node_modules -- src/index.js",
+    "start": "node build/server.js",
+    "start-dev": "babel-watch --message 'restarting' --ignore node_modules -- src/server.js",
     "test": "jest --watch src",
     "test-no-watch": "jest --force-exit src",
     "verify": "npm-run-all lint flow test-no-watch"

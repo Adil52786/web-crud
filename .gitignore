@@ -8,7 +8,7 @@ dev-certs
 tmp
 
 # generated files
-client/src/**/*.css
+public/bundle.js
 
 # log files
 npm-debug.log*
