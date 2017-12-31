@@ -3,23 +3,16 @@
   "version": "0.1.0",
   "description": "SmartDevice React web UI",
   "scripts": {
-    "build": "npm run build-css && react-scripts build",
-    "build-css": "node-sass src/ -o src/",
-    "ci-test": "npm-run-all build-css cover",
-    "cover": "CI=true npm test -- --coverage",
+    "build": "npm-run-all verify bundle",
+    "bundle": "webpack",
+    "clean": "rm -rf build coverage",
+    "cover": "CI=true jest src -- --coverage",
     "cover-open": "open coverage/lcov-report/index.html",
     "flow": "flow",
     "format": "prettier-eslint --write src/**/*.js",
     "lint": "eslint --quiet src --ext .js",
-    "mysql": "mysql --host 127.0.0.1 -P 33060 --user root",
-    "postinstall": "flow-typed install",
-    "Xprepush": "npm run verify",
-    "start": "npm-run-all -p watch-css start-js",
-    "start-js": "react-scripts start",
-    "test": "react-scripts test --env=jsdom",
-    "test-no-watch": "CI=true react-scripts test --env=jsdom",
-    "verify": "npm-run-all lint flow test-no-watch",
-    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch"
+    "test": "jest --watch src",
+    "verify": "npm-run-all lint flow format cover"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -28,42 +21,31 @@
     ],
     "coverageThreshold": {
       "global": {
-        "branches": 80,
+        "branches": 90,
         "functions": 90,
         "lines": 90,
         "statements": 90
       }
     }
   },
-  "dependencies": {
-    "font-awesome": "^4.7.0",
-    "lodash": "^4.17.4",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-hash-route": "^1.0.0",
-    "react-modal": "^3.1.2",
-    "react-redux": "^5.0.6",
-    "react-scripts": "1.0.17",
-    "redux": "^3.7.2",
-    "redux-easy": "^1.1.13"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "enzyme": "^3.1.0",
-    "enzyme-adapter-react-16": "^1.0.3",
-    "eslint": "^4.10.0",
-    "eslint-plugin-flowtype": "^2.39.1",
-    "eslint-plugin-html": "^3.2.2",
-    "eslint-plugin-react": "^7.5.1",
-    "flow-bin": "^0.57.3",
-    "flow-typed": "^2.2.3",
-    "husky": "^0.14.3",
-    "jest": "^21.2.1",
-    "jest-cli": "^21.2.1",
-    "jest-fetch-mock": "^1.4.0",
-    "node-sass": "^4.5.3",
-    "npm-run-all": "^4.1.1",
-    "prettier": "^1.7.4",
-    "prettier-eslint-cli": "^4.4.0",
-    "redux-mock-store": "^1.3.0"
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.14.0",
+    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-html": "^4.0.1",
+    "flow-bin": "^0.61.0",
+    "jest": "^22.0.4",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.9.2",
+    "prettier-eslint-cli": "^4.7.0",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0"
   }
 }

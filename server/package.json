@@ -1,7 +1,7 @@
 {
-  "name": "smart-device-server",
+  "name": "web-crud",
   "version": "1.0.0",
-  "description": "SmartDevice Express server for REST services",
+  "description": "demo of a web app that uses CRUD REST servies",
   "main": "index.js",
   "scripts": {
     "build": "babel src -d build",
@@ -15,7 +15,6 @@
     "format": "prettier-eslint --write src/**/*.js",
     "lint": "eslint --quiet src --ext .js",
     "postinstall": "flow-typed install",
-    "Xprepush": "npm run verify",
     "start": "node build/index.js",
     "start-dev": "babel-watch --message 'restarting' --ignore node_modules -- src/index.js",
     "test": "jest --forceExit",

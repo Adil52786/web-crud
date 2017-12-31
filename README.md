@@ -1,5 +1,4 @@
-# smartdevice2
+# web-crud
 
-This version of the SmartDevice web app provides flexibility
-in defining the organizational hierarchy and
-types of supported devices.
+This is a web app that demonstrates simple use of Node.js and Express
+to implement REST services that work with MySQL.
