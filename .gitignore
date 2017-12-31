@@ -1,0 +1,23 @@
+# generated directories
+build
+coverage
+flow-typed
+node_modules
+reports
+dev-certs
+tmp
+
+# generated files
+client/src/**/*.css
+
+# log files
+npm-debug.log*
+
+# miscellaneous files
+*~
+.*.swp
+.DS_Store
+.env.development.local
+.env.local
+.env.production.local
+.env.test.local
