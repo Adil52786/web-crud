@@ -13,6 +13,7 @@ let relationship: string;
 const contacts = {};
 
 function addContact(): void {
+  console.log('contacts.js addContact: entered');
   const id = contacts.length + 1;
   const contact = {id, name, relationship};
   contacts[id] = contact;

@@ -19,6 +19,7 @@
     "postinstall": "flow-typed install",
     "start": "node build/server.js",
     "start-dev": "babel-watch --message 'restarting' --ignore node_modules -- src/server.js",
+    "sync": "browser-sync start --proxy 'localhost:3000' --files 'public/*.*'",
     "test": "jest --watch src",
     "test-no-watch": "jest --force-exit src",
     "verify": "npm-run-all lint flow test-no-watch"
@@ -52,6 +53,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-watch": "^2.0.7",
+    "browser-sync": "^2.23.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.13.1",
     "eslint-plugin-flowtype": "^2.40.1",
