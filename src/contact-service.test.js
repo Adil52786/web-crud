@@ -50,11 +50,11 @@ describe('contact-service', () => {
       post: jest.fn()
     };
     contactService(app);
-    expect(app.delete).toBeCalledWith('/types/:id', deleteByIdHandler);
-    expect(app.get).toBeCalledWith('/types', getAllHandler);
-    expect(app.get).toBeCalledWith('/types/:id', getByIdHandler);
-    expect(app.patch).toBeCalledWith('/types/:id', patchHandler);
-    expect(app.post).toBeCalledWith('/types', postHandler);
+    expect(app.delete).toBeCalledWith('/contacts/:id', deleteByIdHandler);
+    expect(app.get).toBeCalledWith('/contacts', getAllHandler);
+    expect(app.get).toBeCalledWith('/contacts/:id', getByIdHandler);
+    expect(app.patch).toBeCalledWith('/contacts/:id', patchHandler);
+    expect(app.post).toBeCalledWith('/contacts', postHandler);
   });
 
   test('deleteByIdHandler', async () => {

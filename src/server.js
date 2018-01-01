@@ -1,6 +1,7 @@
 // @flow
 
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const express = require('express');
 const healthCheck = require('express-healthcheck');
 const morgan = require('morgan');
@@ -18,6 +19,9 @@ app.use(bodyParser.json());
 
 // Parse text request bodies to JavaScript strings.
 app.use(bodyParser.text());
+
+// Enable cross-origin resource sharing.
+app.use(cors());
 
 contactService(app);
 

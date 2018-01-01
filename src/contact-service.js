@@ -17,7 +17,7 @@ const NOT_FOUND = 404;
 const OK = 200;
 
 function contactService(app: express$Application): void {
-  const URL_PREFIX = '/types';
+  const URL_PREFIX = '/contacts';
 
   app.delete(URL_PREFIX + '/:id', deleteByIdHandler);
   app.get(URL_PREFIX, getAllHandler);
@@ -102,8 +102,10 @@ async function postHandler(
   res: express$Response
 ): Promise<void> {
   try {
+    console.log('contact-service.js postHandler: req.body =', req.body);
     const obj = JSON.parse(req.body);
     const id = await mySql.insert(tableName, obj);
+    console.log('contact-service.js postHandler: id =', id);
     res.status(OK).send(String(id));
   } catch (e) {
     // istanbul ignore next

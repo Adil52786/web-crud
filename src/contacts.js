@@ -2,6 +2,15 @@
 
 import './contacts.css';
 
+type ContactType = {
+  id?: number,
+  name: string,
+  relationship: string
+};
+
+const OK = 200;
+const URL_PREFIX = 'http://localhost:3000/contacts';
+
 let addButton: HTMLButtonElement;
 let nameInput: HTMLInputElement;
 let relationshipInput: HTMLInputElement;
@@ -10,16 +19,26 @@ let table: HTMLTableElement;
 let document: Document;
 let name: string;
 let relationship: string;
-const contacts = {};
+const contacts: {[id: number]: ContactType} = {};
 
-function addContact(): void {
-  console.log('contacts.js addContact: entered');
-  const id = contacts.length + 1;
-  const contact = {id, name, relationship};
+async function addContact(): Promise<void> {
+  const contact: ContactType = {name, relationship};
+
+  const url = URL_PREFIX;
+  const options = {method: 'POST', body: JSON.stringify(contact)};
+  const res = await fetch(url, options);
+  if (res.status !== OK) {
+    handleError(res);
+    return;
+  }
+
+  const id = await Number(res.text());
+  console.log('contacts.js addContact: id =', id);
+  contact.id = id;
   contacts[id] = contact;
 
   const tr = document.createElement('tr');
-  tr.id = String(id);
+  tr.id = 'contact-' + id;
 
   let td = document.createElement('td');
   td.textContent = name;
@@ -39,9 +58,17 @@ function addContact(): void {
   table.appendChild(tr);
 }
 
-function deleteContact(id: string): void {
+async function deleteContact(id: number): Promise<void> {
+  const url = URL_PREFIX + '/' + id;
+  const options = {method: 'DELETE'};
+  const res = await fetch(url, options);
+  if (res.status !== OK) {
+    handleError(res);
+    return;
+  }
+
   delete contacts[id];
-  const tr = document.getElementById(id);
+  const tr = document.getElementById('contact-' + id);
   if (tr) {
     const parent = tr.parentNode;
     if (parent) parent.removeChild(tr);
@@ -73,6 +100,10 @@ export function handleInput(): void {
   name = nameInput.value;
   relationship = relationshipInput.value;
   addButton.disabled = name.length === 0 || relationship.length === 0;
+}
+
+function handleError(res) {
+  console.log('contacts.js handleError: status =', res.status);
 }
 
 export function onLoad(doc: Document) {
