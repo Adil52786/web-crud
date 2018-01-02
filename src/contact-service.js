@@ -102,10 +102,8 @@ async function postHandler(
   res: express$Response
 ): Promise<void> {
   try {
-    console.log('contact-service.js postHandler: req.body =', req.body);
     const obj = JSON.parse(req.body);
     const id = await mySql.insert(tableName, obj);
-    console.log('contact-service.js postHandler: id =', id);
     res.set('Content-Type', 'text/plain');
     res.status(OK).send(String(id));
   } catch (e) {
