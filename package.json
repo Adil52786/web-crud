@@ -14,7 +14,7 @@
     "dbstart": "mysql.server start",
     "dbstop": "mysql.server stop",
     "flow": "flow",
-    "format": "prettier-eslint --write src/**/*.js",
+    "format": "prettier-eslint --write src/*.js src/**/*.js",
     "lint": "eslint --quiet src --ext .js",
     "postinstall": "flow-typed install",
     "start": "node build/server.js",

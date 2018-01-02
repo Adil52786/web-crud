@@ -17,7 +17,6 @@ const NOT_FOUND = 404;
 const OK = 200;
 
 describe('contact-service', () => {
-
   async function createContact(
     name: string,
     relationship: string
