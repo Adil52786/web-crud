@@ -5,7 +5,7 @@ use web_crud;
 
 create table contact (
   id int auto_increment primary key,
-  name text,
+  name varchar(255) unique, -- can't use unique with text type
   relationship text
 );
 

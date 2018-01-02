@@ -106,6 +106,7 @@ async function postHandler(
     const obj = JSON.parse(req.body);
     const id = await mySql.insert(tableName, obj);
     console.log('contact-service.js postHandler: id =', id);
+    res.set('Content-Type', 'text/plain');
     res.status(OK).send(String(id));
   } catch (e) {
     // istanbul ignore next
